@@ -68,7 +68,7 @@ def run_matlab_input_preparation():
 def upload_matlab_rain_file(bucket_time, config):
     try:
         upload_file_to_bucket(bucket_time, KEY_FILE, MATLAB_DIR, config['bucket_name'],
-                             config['input_discharge_file'], config['input_discharge_file'])
+                             config['matlab_discharge_file'], config['matlab_discharge_file'])
     except Exception as e:
         print('download_discharge_input_files|Exception : ', str(e))
         return False
