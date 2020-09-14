@@ -1,1 +1,1 @@
-matlab -nodisplay -nosplash -nodesktop -r "run('read_res11_WL.m');exit;"
+matlab -nodisplay -nosplash -nodesktop -r "run('create_dfs0_MIKE_Inputs.m');exit;"

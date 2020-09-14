@@ -1,9 +1,9 @@
 {
-    "gcp_service_key": "/home/hasitha/uwcc-admin.json",
-    "output_dir": "/home/hasitha/PycharmProjects/MikeAutomation/output",
     "input_rain_file": "mike_rf.txt",
     "input_tide_file": "mike_tide.txt",
+    "input_discharge_file": "mike_discharge.txt",
     "bucket_name": "wrf_nfs",
-    "mike_rf_bucket_file": "mike_rf.txt",
-    "mike_tide_bucket_file": "mike_tide.txt"
+    "matlab_rain_file": "input_matlab_rain.dfs0",
+    "matlab_discharge_file": "input_matlab_discharge.dfs0",
+    "matlab_tide_file": "input_matlab_tide.dfs0"
 }
