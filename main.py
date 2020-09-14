@@ -3,7 +3,7 @@ import traceback
 from datetime import datetime,timedelta
 from input.input_prep import download_rain_input_files, \
     download_tide_input_files, download_discharge_input_files, \
-    run_matlab_input_preparation
+    run_matlab_input_preparation, upload_matlab_rain_file
 
 
 def _get_config(config_path):
@@ -27,8 +27,9 @@ if __name__ == '__main__':
     print('bucket_time : ', bucket_time)
     config = _get_config(config_path)
     print('config : ', config)
-    download_rain_input_files(bucket_time, config)
-    download_tide_input_files(bucket_time, config)
+    #download_rain_input_files(bucket_time, config)
+    #download_tide_input_files(bucket_time, config)
     #download_discharge_input_files(bucket_time, config)
-    run_matlab_input_preparation()
+    #run_matlab_input_preparation()
+    upload_matlab_rain_file(bucket_time, config)
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

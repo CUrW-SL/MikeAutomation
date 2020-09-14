@@ -65,13 +65,24 @@ def run_matlab_input_preparation():
         print('run_matlab_input_preparation|Exception: ', str(ex))
 
 
-def upload_file_to_bucket(key_file, bucket_name, source_file_name, destination_blob_name):
+def upload_matlab_rain_file(bucket_time, config):
+    try:
+        upload_file_to_bucket(bucket_time, KEY_FILE, MATLAB_DIR, config['bucket_name'],
+                             config['input_discharge_file'], config['input_discharge_file'])
+    except Exception as e:
+        print('download_discharge_input_files|Exception : ', str(e))
+        return False
+
+
+def upload_file_to_bucket(bucket_time, key_file, output_dir, bucket_name, src_file, dest_file):
     try:
         client = storage.Client.from_service_account_json(key_file)
         bucket = client.get_bucket(bucket_name)
-        blob = bucket.blob(destination_blob_name)
+        destination_file_name = 'mike/inputs/{}/{}'.format(bucket_time, src_file)
+        source_file_name = '{}/{}'.format(output_dir, dest_file)
+        blob = bucket.blob(destination_file_name)
         blob.upload_from_filename(source_file_name)
-        print("File {} uploaded to {}.".format(source_file_name, destination_blob_name))
+        print("File {} uploaded to {}.".format(source_file_name, destination_file_name))
         return True
     except Exception as e:
         print('upload_file_to_bucket|Exception : ', str(e))
