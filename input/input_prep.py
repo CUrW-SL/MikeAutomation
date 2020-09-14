@@ -58,7 +58,7 @@ def download_input_files(bucket_time, key_file, output_dir, bucket_name, src_fil
 
 def run_matlab_input_preparation():
     try:
-        command = 'windows_scripts/matlab_run.bat'
+        command = '.\windows_scripts\matlab_run.bat'
         print('run_matlab_input_preparation|command: ', command)
         subprocess.call(command, shell=True)
     except Exception as ex:
