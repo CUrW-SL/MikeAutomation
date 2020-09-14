@@ -1,0 +1,10 @@
+{
+    "gcp_service_key": "/home/hasitha/uwcc-admin.json",
+    "input_dir": "",
+    "output_dir": "",
+    "input_rain_file": "",
+    "input_tide_file": "",
+    "bucket_name": "wrf_nfs",
+    "mike_rf_bucket_file": "mike_rf.txt",
+    "mike_tide_bucket_file": "mike_tide.txt"
+}
