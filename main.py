@@ -1,9 +1,7 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import json
 import traceback
+from datetime import datetime,timedelta
+from input.input_prep import download_rain_input_files
 
 
 def _get_config(config_path):
@@ -19,6 +17,14 @@ def _get_config(config_path):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print('PyCharm')
+    config_path = '/home/hasitha/PycharmProjects/MikeAutomation/config.json'
+    run_date = datetime.now().strftime('%Y-%m-%d %H:00:00')
+    #bucket_time = datetime.now().strftime('%Y-%m-%d_%H-00-00')
+    bucket_time = '2020-09-14_10-00-00'
+    print('run_date : ', run_date)
+    print('bucket_time : ', bucket_time)
+    config = _get_config(config_path)
+    print('config : ', config)
+    download_rain_input_files(bucket_time, config)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
