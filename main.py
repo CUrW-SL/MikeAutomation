@@ -29,6 +29,6 @@ if __name__ == '__main__':
     print('config : ', config)
     download_rain_input_files(bucket_time, config)
     download_tide_input_files(bucket_time, config)
-    download_discharge_input_files(bucket_time, config)
+    #download_discharge_input_files(bucket_time, config)
     run_matlab_input_preparation()
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
