@@ -1,10 +1,12 @@
 import fnmatch
+import subprocess
 import sys
 import os
 from google.cloud import storage
 
 MATLAB_DIR = r"E:\MIKE\ProductionRun\hourly_run\Matlab"
 KEY_FILE = r"E:\MIKE\ProductionRun\hourly_run\uwcc-admin\uwcc-admin.json"
+MATLAB_INPUT_PROCESSOR = r"E:\MIKE\ProductionRun\hourly_run\MikeAutomation\windows_scripts\matlab_run.bat"
 
 
 def download_rain_input_files(bucket_time, config):
@@ -55,7 +57,12 @@ def download_input_files(bucket_time, key_file, output_dir, bucket_name, src_fil
 
 
 def run_matlab_input_preparation():
-    print('')
+    try:
+        command = 'windows_scripts/matlab_run.bat'
+        print('run_matlab_input_preparation|command: ', command)
+        subprocess.call(command, shell=True)
+    except Exception as ex:
+        print('run_matlab_input_preparation|Exception: ', str(ex))
 
 
 def upload_file_to_bucket(key_file, bucket_name, source_file_name, destination_blob_name):
