@@ -36,8 +36,8 @@
 
    [Simulation]
       [Simulation_Period]
-         start = 2020, 9, 6, 0, 0, 0
-         end = 2020, 9, 11, 0, 0, 0
+         start = {START_TIME}
+         end = {END_TIME}
          TimeStepType = 0
          timestep = 4
          timestepunit = 3

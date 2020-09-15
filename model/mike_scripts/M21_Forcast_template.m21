@@ -51,7 +51,7 @@
          Number_Of_Timesteps = 108000
          Time_Step_Interval = 4
          Warm_Up_Period = 5000
-         Start_Time = 2020, 9, 6, 0, 0, 0
+         Start_Time = {START_TIME}
       EndSect  // SIMULATION_PERIOD
 
       [MASS_BUDGET]
