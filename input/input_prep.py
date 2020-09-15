@@ -1,15 +1,9 @@
-import fnmatch
 import subprocess
-import sys
-import os
 
-from utils.com_utils import download_input_files, upload_file_to_bucket
+from utils.com_utils import download_input_files, upload_file_to_bucket, KEY_FILE
 
 MATLAB_DIR = r"E:\MIKE\ProductionRun\hourly_run\Matlab"
-KEY_FILE = r"E:\MIKE\ProductionRun\hourly_run\uwcc-admin\uwcc-admin.json"
 MATLAB_INPUT_PROCESSOR = r"E:\MIKE\ProductionRun\hourly_run\MikeAutomation\windows_scripts\matlab_run.bat"
-M11_SIM_FILE = r"E:\MIKE\ProductionRun\hourly_run\Matlab"
-M11_SIM_FILE = r"E:\MIKE\ProductionRun\hourly_run\Matlab"
 
 
 def prepare_inputs(bucket_time, config):
@@ -18,9 +12,9 @@ def prepare_inputs(bucket_time, config):
     download_tide_input_files(bucket_time, config)
     download_discharge_input_files(bucket_time, config)
     run_matlab_input_preparation()
-    upload_matlab_rain_file(bucket_time, config)
-    upload_matlab_tide_file(bucket_time, config)
-    upload_matlab_dis_file(bucket_time, config)
+    upload_matlab_rain_file(bucket_time, config, 'inputs')
+    upload_matlab_tide_file(bucket_time, config, 'inputs')
+    upload_matlab_dis_file(bucket_time, config, 'inputs')
     print('prepare_inputs|completed')
 
 

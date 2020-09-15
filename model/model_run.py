@@ -1,5 +1,6 @@
 from datetime import datetime,timedelta
 from utils.com_utils import download_input_files, upload_file_to_bucket, KEY_FILE
+import subprocess
 
 
 #M11_SIM_FILE = r"E:\MIKE\ProductionRun\hourly_run\MIKE11\Simulations\M11_Forcast.sim11"
@@ -76,5 +77,13 @@ def update_mike21_sim_file(bucket_time, config):
         file_data = file.read().replace('{START_TIME}', start_time)
         _write_data_to_file(M21_SIM_FILE, file_data)
 
+
+def run_mike():
+    try:
+        command = '.\windows_scripts\mike_run.bat'
+        print('run_mike|command: ', command)
+        subprocess.call(command, shell=True)
+    except Exception as ex:
+        print('run_mike|Exception: ', str(ex))
 
 
