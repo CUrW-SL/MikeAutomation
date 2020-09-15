@@ -1,5 +1,7 @@
 from google.cloud import storage
 
+KEY_FILE = r"E:\MIKE\ProductionRun\hourly_run\uwcc-admin\uwcc-admin.json"
+
 
 def download_input_files(bucket_time, key_file, output_dir, bucket_name, src_file, dest_file):
     try:
@@ -21,11 +23,11 @@ def download_input_files(bucket_time, key_file, output_dir, bucket_name, src_fil
         return False
 
 
-def upload_file_to_bucket(bucket_time, key_file, output_dir, bucket_name, src_file, dest_file):
+def upload_file_to_bucket(bucket_time, key_file, output_dir, bucket_name, src_file, dest_file, type):
     try:
         client = storage.Client.from_service_account_json(key_file)
         bucket = client.get_bucket(bucket_name)
-        destination_file_name = 'mike/inputs/{}/{}'.format(bucket_time, src_file)
+        destination_file_name = 'mike/{}/{}/{}'.format(type, bucket_time, src_file)
         source_file_name = '{}/{}'.format(output_dir, dest_file)
         blob = bucket.blob(destination_file_name)
         blob.upload_from_filename(source_file_name)
@@ -34,5 +36,4 @@ def upload_file_to_bucket(bucket_time, key_file, output_dir, bucket_name, src_fi
     except Exception as e:
         print('upload_file_to_bucket|Exception : ', str(e))
         return False
-
 
