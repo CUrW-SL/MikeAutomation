@@ -86,7 +86,7 @@ def run_mike(bucket_time, config):
         print('run_mike|command: ', command)
         subprocess.call(command, shell=True)
         upload_file_to_bucket(bucket_time, KEY_FILE, RESULTS_DIR, config['bucket_name'],
-                              config['mike_result_file'], config['mike_result_file'], 'output')
+                              config['mike_result_file'], config['mike_result_file'], 'outputs')
     except Exception as ex:
         print('run_mike|Exception: ', str(ex))
 

@@ -3,9 +3,9 @@ from google.cloud import storage
 KEY_FILE = r"E:\MIKE\ProductionRun\hourly_run\uwcc-admin\uwcc-admin.json"
 
 
-def download_input_files(bucket_time, key_file, output_dir, bucket_name, src_file, dest_file):
+def download_input_files(bucket_time, key_file, output_dir, bucket_name, src_file, dest_file, type):
     try:
-        source_blob_name = 'mike/inputs/{}/{}'.format(bucket_time, src_file)
+        source_blob_name = 'mike/{}/{}/{}'.format(type, bucket_time, src_file)
         print('download_input_files|source_blob_name : ', source_blob_name)
         destination_file_name = '{}/{}'.format(output_dir, dest_file)
         print('download_input_files|destination_file_name : ', destination_file_name)

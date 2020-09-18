@@ -14,7 +14,7 @@ def prepare_outputs(bucket_time, config):
 def download_mike_rain_output_files(bucket_time, config):
     try:
         download_input_files(bucket_time, KEY_FILE, MATLAB_DIR, config['bucket_name'],
-                             config['mike_result_file'], config['mike_result_file'])
+                             config['mike_result_file'], config['mike_result_file'], 'outputs')
     except Exception as e:
         print('download_mike_rain_output_files|Exception : ', str(e))
         return False
@@ -26,7 +26,7 @@ def run_matlab_output_preparation(bucket_time, config):
         print('run_matlab_input_preparation|command: ', command)
         subprocess.call(command, shell=True)
         upload_file_to_bucket(bucket_time, KEY_FILE, MATLAB_DIR, config['bucket_name'],
-                              config['output_wl_file'], config['output_wl_file'], 'output')
+                              config['output_wl_file'], config['output_wl_file'], 'outputs')
     except Exception as ex:
         print('run_matlab_output_preparation|Exception: ', str(ex))
 
