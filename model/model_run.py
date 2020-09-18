@@ -16,6 +16,8 @@ RAIN_DIR = r"E:\MIKE\ProductionRun\hourly_run\MIKE11\RR"
 
 MATLAB_DIR = r"E:\MIKE\ProductionRun\hourly_run\Matlab"
 
+RESULTS_DIR = r"E:\MIKE\ProductionRun\hourly_run\Results"
+
 
 def download_rain_matlab_file(bucket_time, config):
     try:
@@ -78,11 +80,13 @@ def update_mike21_sim_file(bucket_time, config):
         _write_data_to_file(M21_SIM_FILE, file_data)
 
 
-def run_mike():
+def run_mike(bucket_time, config):
     try:
         command = '.\windows_scripts\mike_run.bat'
         print('run_mike|command: ', command)
         subprocess.call(command, shell=True)
+        upload_file_to_bucket(bucket_time, KEY_FILE, RESULTS_DIR, config['bucket_name'],
+                              config['mike_result_file'], config['mike_result_file'], 'output')
     except Exception as ex:
         print('run_mike|Exception: ', str(ex))
 

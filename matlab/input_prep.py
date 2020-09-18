@@ -3,7 +3,7 @@ import subprocess
 from utils.com_utils import download_input_files, upload_file_to_bucket, KEY_FILE
 
 MATLAB_DIR = r"E:\MIKE\ProductionRun\hourly_run\Matlab"
-MATLAB_INPUT_PROCESSOR = r"E:\MIKE\ProductionRun\hourly_run\MikeAutomation\windows_scripts\matlab_run.bat"
+MATLAB_INPUT_PROCESSOR = r"E:\MIKE\ProductionRun\hourly_run\MikeAutomation\windows_scripts\matlab_input_process.bat"
 
 
 def prepare_inputs(bucket_time, config):

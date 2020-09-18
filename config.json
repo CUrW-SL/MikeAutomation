@@ -6,6 +6,7 @@
     "matlab_rain_file": "input_matlab_rain.dfs0",
     "matlab_discharge_file": "input_matlab_dis.dfs0",
     "matlab_tide_file": "input_matlab_tide.dfs0",
+    "mike_result_file": "M11_Forcast.res11",
     "forward_days" : 2,
     "backward_days" : 3
 }

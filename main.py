@@ -1,7 +1,7 @@
 import json
 import traceback
 from datetime import datetime,timedelta
-from input.input_prep import prepare_inputs
+from matlab.input_prep import prepare_inputs
 from model.model_run import update_mike11_sim_file
 
 

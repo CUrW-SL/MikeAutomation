@@ -6,15 +6,15 @@ KEY_FILE = r"E:\MIKE\ProductionRun\hourly_run\uwcc-admin\uwcc-admin.json"
 def download_input_files(bucket_time, key_file, output_dir, bucket_name, src_file, dest_file):
     try:
         source_blob_name = 'mike/inputs/{}/{}'.format(bucket_time, src_file)
-        print('download_rain_input_files|source_blob_name : ', source_blob_name)
+        print('download_input_files|source_blob_name : ', source_blob_name)
         destination_file_name = '{}/{}'.format(output_dir, dest_file)
-        print('download_rain_input_files|destination_file_name : ', destination_file_name)
+        print('download_input_files|destination_file_name : ', destination_file_name)
         storage_client = storage.Client.from_service_account_json(key_file)
-        print('download_rain_input_files|storage_client : ', storage_client)
+        print('download_input_files|storage_client : ', storage_client)
         bucket = storage_client.bucket(bucket_name)
-        print('download_rain_input_files|bucket : ', bucket)
+        print('download_input_files|bucket : ', bucket)
         blob = bucket.blob(source_blob_name)
-        print('download_rain_input_files|blob : ', blob.name)
+        print('download_input_files|blob : ', blob.name)
         blob.download_to_filename(destination_file_name)
         print('Blob {} downloaded to {}.'.format(source_blob_name, destination_file_name))
         return True
