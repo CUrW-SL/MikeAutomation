@@ -3,6 +3,7 @@ import traceback
 from datetime import datetime,timedelta
 from matlab.input_prep import prepare_inputs
 from model.model_run import update_mike11_sim_file
+from matlab.output_prep import prepare_outputs, run_matlab_output_preparation
 
 
 def _get_config(config_path):
@@ -28,5 +29,7 @@ if __name__ == '__main__':
     config = _get_config(config_path)
     print('config : ', config)
     #prepare_inputs(bucket_time, config)
-    update_mike11_sim_file(bucket_time, config)
+    #update_mike11_sim_file(bucket_time, config)
+    prepare_outputs(bucket_time, config)
+    run_matlab_output_preparation(bucket_time, config)
 
