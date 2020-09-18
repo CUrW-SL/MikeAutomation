@@ -23,7 +23,8 @@ if __name__ == '__main__':
     # config_path = "/home/hasitha/PycharmProjects/MikeAutomation/config.json"
     run_date = datetime.now().strftime('%Y-%m-%d %H:00:00')
     #bucket_time = datetime.now().strftime('%Y-%m-%d_%H-00-00')
-    bucket_time = '2020-09-09_10-00-00'
+    # bucket_time = '2020-09-09_10-00-00'
+    bucket_time = '2020-09-10_09-00-00'
     print('run_date : ', run_date)
     print('bucket_time : ', bucket_time)
     config = _get_config(config_path)
