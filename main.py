@@ -19,8 +19,8 @@ def _get_config(config_path):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    #config_path = r"E:\MIKE\ProductionRun\hourly_run\MikeAutomation\config.json"
-    config_path = "/home/hasitha/PycharmProjects/MikeAutomation/config.json"
+    config_path = r"E:\MIKE\ProductionRun\hourly_run\MikeAutomation\config.json"
+    # config_path = "/home/hasitha/PycharmProjects/MikeAutomation/config.json"
     run_date = datetime.now().strftime('%Y-%m-%d %H:00:00')
     #bucket_time = datetime.now().strftime('%Y-%m-%d_%H-00-00')
     bucket_time = '2020-09-09_10-00-00'
