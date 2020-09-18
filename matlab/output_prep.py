@@ -9,7 +9,6 @@ MATLAB_INPUT_PROCESSOR = r"E:\MIKE\ProductionRun\hourly_run\MikeAutomation\windo
 def prepare_outputs(bucket_time, config):
     print('prepare_outputs|started')
     download_mike_rain_output_files(bucket_time, config)
-    print('prepare_outputs|completed')
 
 
 def download_mike_rain_output_files(bucket_time, config):

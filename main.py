@@ -30,6 +30,6 @@ if __name__ == '__main__':
     print('config : ', config)
     #prepare_inputs(bucket_time, config)
     #update_mike11_sim_file(bucket_time, config)
-    prepare_outputs(bucket_time, config)
-    run_matlab_output_preparation(bucket_time, config)
+    if prepare_outputs(bucket_time, config):
+        run_matlab_output_preparation(bucket_time, config)
 
