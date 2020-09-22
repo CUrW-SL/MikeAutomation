@@ -21,7 +21,7 @@
    [Input]
       nwk = |..\CS-Network-HD\NWK_mc_k_SBW_KCB_Prob_reference_at 20200516.nwk11|
       xs = |..\CS-Network-HD\XNS_mc_k_prob-reference_Ambathale at 20200516.xns11|
-      bnd = |..\Boundary Conditions\BC-Forcast.bnd11|
+      bnd = |..\BoundaryConditions\BC-Forcast.bnd11|
       rr = |..\RR\RR_Forcast.RR11|
       hd = |..\CS-Network-HD\HD_Para_SLLRDC-Cali_2010Nov.HD11|
       ad = ||
