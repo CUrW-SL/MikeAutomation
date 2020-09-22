@@ -22,7 +22,7 @@ RESULTS_DIR = r"E:\MIKE\ProductionRun\hourly_run\Results"
 def download_rain_matlab_file(bucket_time, config):
     try:
         download_input_files(bucket_time, KEY_FILE, RAIN_DIR, config['bucket_name'],
-                             config['matlab_rain_file'], config['matlab_rain_file'])
+                             config['matlab_rain_file'], config['matlab_rain_file'], 'inputs')
     except Exception as e:
         print('download_rain_matlab_file|Exception : ', str(e))
         return False
@@ -31,7 +31,7 @@ def download_rain_matlab_file(bucket_time, config):
 def download_tide_matlab_file(bucket_time, config):
     try:
         download_input_files(bucket_time, KEY_FILE, BC_DIR, config['bucket_name'],
-                             config['matlab_tide_file'], config['matlab_tide_file'])
+                             config['matlab_tide_file'], config['matlab_tide_file'], 'inputs')
     except Exception as e:
         print('download_tide_matlab_file|Exception : ', str(e))
         return False
@@ -40,7 +40,7 @@ def download_tide_matlab_file(bucket_time, config):
 def download_dis_matlab_file(bucket_time, config):
     try:
         download_input_files(bucket_time, KEY_FILE, BC_DIR, config['bucket_name'],
-                             config['matlab_discharge_file'], config['matlab_discharge_file'])
+                             config['matlab_discharge_file'], config['matlab_discharge_file'], 'inputs')
     except Exception as e:
         print('download_dis_matlab_file|Exception : ', str(e))
         return False
