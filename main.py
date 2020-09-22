@@ -1,9 +1,9 @@
 import json
 import traceback
-from datetime import datetime,timedelta
+from datetime import datetime
 from matlab.input_prep import prepare_inputs
-from model.model_run import update_mike11_sim_file
-from matlab.output_prep import prepare_outputs, run_matlab_output_preparation
+from model.model_run import mike_run
+from matlab.output_prep import prepare_outputs
 
 
 def _get_config(config_path):
@@ -15,6 +15,36 @@ def _get_config(config_path):
         traceback.print_exc()
     finally:
         return config
+
+
+def input_process(config_path, bucket_time):
+    print('input_process')
+    config = _get_config(config_path)
+    try:
+        prepare_inputs(bucket_time, config)
+    except Exception as ex:
+        print('input_process|Exception : ', str(ex))
+        traceback.print_exc()
+
+
+def model_run(config_path, bucket_time):
+    print('model_run')
+    config = _get_config(config_path)
+    try:
+        mike_run(bucket_time, config)
+    except Exception as ex:
+        print('model_run|Exception : ', str(ex))
+        traceback.print_exc()
+
+
+def output_process(config_path, bucket_time):
+    print('output_process')
+    config = _get_config(config_path)
+    try:
+        prepare_outputs(bucket_time, config)
+    except Exception as ex:
+        print('output_process|Exception : ', str(ex))
+        traceback.print_exc()
 
 
 # Press the green button in the gutter to run the script.
@@ -31,6 +61,4 @@ if __name__ == '__main__':
     print('config : ', config)
     #prepare_inputs(bucket_time, config)
     #update_mike11_sim_file(bucket_time, config)
-    if prepare_outputs(bucket_time, config):
-        run_matlab_output_preparation(bucket_time, config)
 

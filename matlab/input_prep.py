@@ -7,7 +7,7 @@ MATLAB_INPUT_PROCESSOR = r"E:\MIKE\ProductionRun\hourly_run\MikeAutomation\windo
 
 
 def prepare_inputs(bucket_time, config):
-    print('prepare_inputs|started')
+    print('prepare_inputs|started|bucket_time : ', bucket_time)
     download_rain_input_files(bucket_time, config)
     download_tide_input_files(bucket_time, config)
     download_discharge_input_files(bucket_time, config)

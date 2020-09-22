@@ -80,14 +80,19 @@ def update_mike21_sim_file(bucket_time, config):
         _write_data_to_file(M21_SIM_FILE, file_data)
 
 
-def run_mike(bucket_time, config):
+def mike_run(bucket_time, config):
     try:
+        download_rain_matlab_file(bucket_time, config)
+        download_tide_matlab_file(bucket_time, config)
+        download_dis_matlab_file(bucket_time, config)
+        update_mike11_sim_file(bucket_time, config)
+        update_mike21_sim_file(bucket_time, config)
         command = '.\windows_scripts\mike_run.bat'
-        print('run_mike|command: ', command)
+        print('mike_run|command: ', command)
         subprocess.call(command, shell=True)
         upload_file_to_bucket(bucket_time, KEY_FILE, RESULTS_DIR, config['bucket_name'],
                               config['mike_result_file'], config['mike_result_file'], 'outputs')
     except Exception as ex:
-        print('run_mike|Exception: ', str(ex))
+        print('mike_run|Exception: ', str(ex))
 
 
