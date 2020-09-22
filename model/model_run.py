@@ -23,6 +23,7 @@ def download_rain_matlab_file(bucket_time, config):
     try:
         download_input_files(bucket_time, KEY_FILE, RAIN_DIR, config['bucket_name'],
                              config['matlab_rain_file'], config['matlab_rain_file'], 'inputs')
+        return True
     except Exception as e:
         print('download_rain_matlab_file|Exception : ', str(e))
         return False
@@ -32,6 +33,7 @@ def download_tide_matlab_file(bucket_time, config):
     try:
         download_input_files(bucket_time, KEY_FILE, BC_DIR, config['bucket_name'],
                              config['matlab_tide_file'], config['matlab_tide_file'], 'inputs')
+        return True
     except Exception as e:
         print('download_tide_matlab_file|Exception : ', str(e))
         return False
@@ -41,6 +43,7 @@ def download_dis_matlab_file(bucket_time, config):
     try:
         download_input_files(bucket_time, KEY_FILE, BC_DIR, config['bucket_name'],
                              config['matlab_discharge_file'], config['matlab_discharge_file'], 'inputs')
+        return True
     except Exception as e:
         print('download_dis_matlab_file|Exception : ', str(e))
         return False
@@ -66,6 +69,7 @@ def update_mike11_sim_file(bucket_time, config):
         file_data = file.read().replace('{START_TIME}', start_time).replace('{END_TIME}', end_time)
         print('update_mike11_sim_file|file_data : ', file_data)
         _write_data_to_file(M11_SIM_FILE, file_data)
+        return True
 
 
 def update_mike21_sim_file(bucket_time, config):
@@ -78,20 +82,31 @@ def update_mike21_sim_file(bucket_time, config):
     with open(M21_SIM_FILE_TEMPLATE, 'r') as file:
         file_data = file.read().replace('{START_TIME}', start_time)
         _write_data_to_file(M21_SIM_FILE, file_data)
+        return True
 
 
 def mike_run(bucket_time, config):
     try:
-        download_rain_matlab_file(bucket_time, config)
-        download_tide_matlab_file(bucket_time, config)
-        download_dis_matlab_file(bucket_time, config)
-        update_mike11_sim_file(bucket_time, config)
-        update_mike21_sim_file(bucket_time, config)
-        command = '.\windows_scripts\mike_run.bat'
-        print('mike_run|command: ', command)
-        subprocess.call(command, shell=True)
-        upload_file_to_bucket(bucket_time, KEY_FILE, RESULTS_DIR, config['bucket_name'],
-                              config['mike_result_file'], config['mike_result_file'], 'outputs')
+        if download_rain_matlab_file(bucket_time, config):
+            if download_tide_matlab_file(bucket_time, config):
+                if download_dis_matlab_file(bucket_time, config):
+                    if update_mike11_sim_file(bucket_time, config):
+                        if update_mike21_sim_file(bucket_time, config):
+                            command = '.\windows_scripts\mike_run.bat'
+                            print('mike_run|command: ', command)
+                            subprocess.call(command, shell=True)
+                            upload_file_to_bucket(bucket_time, KEY_FILE, RESULTS_DIR, config['bucket_name'],
+                                                  config['mike_result_file'], config['mike_result_file'], 'outputs')
+                        else:
+                            print('update_mike21_sim_file|failed')
+                    else:
+                        print('update_mike11_sim_file|failed')
+                else:
+                    print('download_dis_matlab_file|failed')
+            else:
+                print('download_tide_matlab_file|failed')
+        else:
+            print('download_rain_matlab_file|failed')
     except Exception as ex:
         print('mike_run|Exception: ', str(ex))
 
