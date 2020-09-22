@@ -11,7 +11,7 @@ M11_SIM_FILE_TEMPLATE = r"E:\MIKE\ProductionRun\hourly_run\MikeAutomation\model\
 # M11_SIM_FILE_TEMPLATE = "/home/hasitha/PycharmProjects/MikeAutomation/model/mike_scripts/M11_Forcast_template.sim11"
 M21_SIM_FILE_TEMPLATE = r"E:\MIKE\ProductionRun\hourly_run\MikeAutomation\model\mike_scripts\M21_Forcast_template.m21"
 
-BC_DIR = r"E:\MIKE\ProductionRun\hourly_run\MIKE11\'Boundary Conditions'"
+BC_DIR = r"E:\MIKE\ProductionRun\hourly_run\MIKE11\BoundaryConditions"
 RAIN_DIR = r"E:\MIKE\ProductionRun\hourly_run\MIKE11\RR"
 
 MATLAB_DIR = r"E:\MIKE\ProductionRun\hourly_run\Matlab"
