@@ -12,9 +12,9 @@ def prepare_inputs(bucket_time, config):
     download_tide_input_files(bucket_time, config)
     download_discharge_input_files(bucket_time, config)
     run_matlab_input_preparation()
-    upload_matlab_rain_file(bucket_time, config, 'inputs')
-    upload_matlab_tide_file(bucket_time, config, 'inputs')
-    upload_matlab_dis_file(bucket_time, config, 'inputs')
+    upload_matlab_rain_file(bucket_time, config)
+    upload_matlab_tide_file(bucket_time, config)
+    upload_matlab_dis_file(bucket_time, config)
     print('prepare_inputs|completed')
 
 
