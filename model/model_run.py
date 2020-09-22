@@ -3,13 +3,13 @@ from utils.com_utils import download_input_files, upload_file_to_bucket, KEY_FIL
 import subprocess
 
 
-#M11_SIM_FILE = r"E:\MIKE\ProductionRun\hourly_run\MIKE11\Simulations\M11_Forcast.sim11"
-M11_SIM_FILE = "/home/hasitha/PycharmProjects/MikeAutomation/output/M11_Forcast.sim11"
+M11_SIM_FILE = r"E:\MIKE\ProductionRun\hourly_run\MIKE11\Simulations\M11_Forcast.sim11"
+# M11_SIM_FILE = "/home/hasitha/PycharmProjects/MikeAutomation/output/M11_Forcast.sim11"
 M21_SIM_FILE = r"E:\MIKE\ProductionRun\hourly_run\'MIKE 21'\Simulations\M21_Forcast.m21"
 
-#M11_SIM_FILE_TEMPLATE = r"E:\MIKE\ProductionRun\hourly_run\MikeAutomation\model\mike_scripts"
-M11_SIM_FILE_TEMPLATE = "/home/hasitha/PycharmProjects/MikeAutomation/model/mike_scripts/M11_Forcast_template.sim11"
-M21_SIM_FILE_TEMPLATE = r"E:\MIKE\ProductionRun\hourly_run\MikeAutomation\model\mike_scripts"
+M11_SIM_FILE_TEMPLATE = r"E:\MIKE\ProductionRun\hourly_run\MikeAutomation\model\mike_scripts\M11_Forcast_template.sim11"
+# M11_SIM_FILE_TEMPLATE = "/home/hasitha/PycharmProjects/MikeAutomation/model/mike_scripts/M11_Forcast_template.sim11"
+M21_SIM_FILE_TEMPLATE = r"E:\MIKE\ProductionRun\hourly_run\MikeAutomation\model\mike_scripts\M21_Forcast_template.m21"
 
 BC_DIR = r"E:\MIKE\ProductionRun\hourly_run\MIKE11\'Boundary Conditions'"
 RAIN_DIR = r"E:\MIKE\ProductionRun\hourly_run\MIKE11\RR"
