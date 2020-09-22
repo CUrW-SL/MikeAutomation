@@ -38,20 +38,20 @@ class StoreHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(str.encode(reply))
 
-        if self.path.startswith('/mike-run'):
+        if self.path.startswith('/model-run'):
             print('StoreHandler|mike-run')
             try:
                 query_components = parse_qs(urlparse(self.path).query)
                 print('StoreHandler|query_components : ', query_components)
                 [run_date] = query_components['run_date']
                 [run_time] = query_components['run_time']
-                print('StoreHandler|mike-run|run_date : ', run_date)
-                print('StoreHandler|mike-run|run_time : ', run_time)
+                print('StoreHandler|model-run|run_date : ', run_date)
+                print('StoreHandler|model-run|run_time : ', run_time)
                 bucket_time = _get_bucket_time(run_date, run_time)
                 model_run(config_path, bucket_time)
                 response = {'response': 'success'}
             except Exception as ex:
-                print('StoreHandler|mike-run|Exception : ', str(ex))
+                print('StoreHandler|model-run|Exception : ', str(ex))
                 response = {'response': 'failed'}
             reply = json.dumps(response)
             self.send_response(200)
