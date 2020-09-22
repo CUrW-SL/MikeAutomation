@@ -47,7 +47,7 @@ def download_discharge_input_files(bucket_time, config):
 
 def run_matlab_input_preparation():
     try:
-        command = '.\windows_scripts\matlab_run.bat'
+        command = '.\windows_scripts\matlab_input_process.bat'
         print('run_matlab_input_preparation|command: ', command)
         subprocess.call(command, shell=True)
     except Exception as ex:
