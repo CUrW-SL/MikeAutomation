@@ -7,7 +7,7 @@ def download_input_files(bucket_time, key_file, output_dir, bucket_name, src_fil
     try:
         source_blob_name = 'mike/{}/{}/{}'.format(type, bucket_time, src_file)
         print('download_input_files|source_blob_name : ', source_blob_name)
-        destination_file_name = '{}/{}'.format(output_dir, dest_file)
+        destination_file_name = '{}\{}'.format(output_dir, dest_file)
         print('download_input_files|destination_file_name : ', destination_file_name)
         storage_client = storage.Client.from_service_account_json(key_file)
         print('download_input_files|storage_client : ', storage_client)
@@ -28,7 +28,7 @@ def upload_file_to_bucket(bucket_time, key_file, output_dir, bucket_name, src_fi
         client = storage.Client.from_service_account_json(key_file)
         bucket = client.get_bucket(bucket_name)
         destination_file_name = 'mike/{}/{}/{}'.format(type, bucket_time, src_file)
-        source_file_name = '{}/{}'.format(output_dir, dest_file)
+        source_file_name = '{}\{}'.format(output_dir, dest_file)
         blob = bucket.blob(destination_file_name)
         blob.upload_from_filename(source_file_name)
         print("File {} uploaded to {}.".format(source_file_name, destination_file_name))
