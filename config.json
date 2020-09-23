@@ -7,7 +7,7 @@
     "matlab_discharge_file": "input_matlab_discharge.dfs0",
     "matlab_tide_file": "input_matlab_tide.dfs0",
     "mike_result_file": "output_mike.res11",
-    "output_wl_file": "mike_wl.csv",
+    "output_wl_file": "resmike11_WL.csv",
     "forward_days" : 2,
     "backward_days" : 3
 }
