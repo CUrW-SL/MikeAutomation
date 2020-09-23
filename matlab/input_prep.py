@@ -8,13 +8,21 @@ MATLAB_INPUT_PROCESSOR = r"E:\MIKE\ProductionRun\hourly_run\MikeAutomation\windo
 
 def prepare_inputs(bucket_time, config):
     print('prepare_inputs|started|bucket_time : ', bucket_time)
-    download_rain_input_files(bucket_time, config)
-    download_tide_input_files(bucket_time, config)
-    download_discharge_input_files(bucket_time, config)
-    run_matlab_input_preparation()
-    upload_matlab_rain_file(bucket_time, config)
-    upload_matlab_tide_file(bucket_time, config)
-    upload_matlab_dis_file(bucket_time, config)
+    if download_rain_input_files(bucket_time, config):
+        if download_tide_input_files(bucket_time, config):
+            if download_discharge_input_files(bucket_time, config):
+                if run_matlab_input_preparation():
+                    upload_matlab_rain_file(bucket_time, config)
+                    upload_matlab_tide_file(bucket_time, config)
+                    upload_matlab_dis_file(bucket_time, config)
+                else:
+                    print('run_matlab_input_preparation|failed')
+            else:
+                print('download_discharge_input_files|failed')
+        else:
+            print('download_tide_input_files|failed')
+    else:
+        print('download_rain_input_files|failed')
     print('prepare_inputs|completed')
 
 
@@ -50,8 +58,10 @@ def run_matlab_input_preparation():
         command = '.\windows_scripts\matlab_input_process.bat'
         print('run_matlab_input_preparation|command: ', command)
         subprocess.call(command, shell=True)
+        return True
     except Exception as ex:
         print('run_matlab_input_preparation|Exception: ', str(ex))
+        return False
 
 
 def upload_matlab_rain_file(bucket_time, config):
