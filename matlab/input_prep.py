@@ -1,4 +1,5 @@
 import subprocess
+import time
 
 from utils.com_utils import download_input_files, upload_file_to_bucket, KEY_FILE
 
@@ -57,6 +58,7 @@ def run_matlab_input_preparation():
         command = '.\windows_scripts\matlab_input_process.bat'
         print('run_matlab_input_preparation|command: ', command)
         subprocess.call(command, shell=True)
+        time.sleep(5)
         print('run_matlab_input_preparation|completed')
         return True
     except Exception as ex:
