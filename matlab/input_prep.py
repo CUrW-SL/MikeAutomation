@@ -58,7 +58,7 @@ def run_matlab_input_preparation():
         command = '.\windows_scripts\matlab_input_process.bat'
         print('run_matlab_input_preparation|command: ', command)
         subprocess.call(command, shell=True)
-        time.sleep(10)
+        time.sleep(15)
         print('run_matlab_input_preparation|completed')
         return True
     except Exception as ex:

@@ -1,7 +1,7 @@
 from datetime import datetime,timedelta
 from utils.com_utils import download_input_files, upload_file_to_bucket, KEY_FILE
 import subprocess
-
+import time
 
 M11_SIM_FILE = r"E:\MIKE\ProductionRun\hourly_run\MIKE11\Simulations\M11_Forcast.sim11"
 # M11_SIM_FILE = "/home/hasitha/PycharmProjects/MikeAutomation/output/M11_Forcast.sim11"
@@ -21,9 +21,8 @@ RESULTS_DIR = r"E:\MIKE\ProductionRun\hourly_run\Results"
 
 def download_rain_matlab_file(bucket_time, config):
     try:
-        download_input_files(bucket_time, KEY_FILE, RAIN_DIR, config['bucket_name'],
+        return download_input_files(bucket_time, KEY_FILE, RAIN_DIR, config['bucket_name'],
                              config['matlab_rain_file'], config['matlab_rain_file'], 'inputs')
-        return True
     except Exception as e:
         print('download_rain_matlab_file|Exception : ', str(e))
         return False
@@ -31,9 +30,8 @@ def download_rain_matlab_file(bucket_time, config):
 
 def download_tide_matlab_file(bucket_time, config):
     try:
-        download_input_files(bucket_time, KEY_FILE, BC_DIR, config['bucket_name'],
+        return download_input_files(bucket_time, KEY_FILE, BC_DIR, config['bucket_name'],
                              config['matlab_tide_file'], config['matlab_tide_file'], 'inputs')
-        return True
     except Exception as e:
         print('download_tide_matlab_file|Exception : ', str(e))
         return False
@@ -41,9 +39,8 @@ def download_tide_matlab_file(bucket_time, config):
 
 def download_dis_matlab_file(bucket_time, config):
     try:
-        download_input_files(bucket_time, KEY_FILE, BC_DIR, config['bucket_name'],
+        return download_input_files(bucket_time, KEY_FILE, BC_DIR, config['bucket_name'],
                              config['matlab_discharge_file'], config['matlab_discharge_file'], 'inputs')
-        return True
     except Exception as e:
         print('download_dis_matlab_file|Exception : ', str(e))
         return False
@@ -95,6 +92,7 @@ def mike_run(bucket_time, config):
                             command = '.\windows_scripts\mike_run.bat'
                             print('mike_run|command: ', command)
                             subprocess.call(command, shell=True)
+                            time.sleep(10)
                             upload_file_to_bucket(bucket_time, KEY_FILE, RESULTS_DIR, config['bucket_name'],
                                                   config['mike_result_file'], config['mike_result_file'], 'outputs')
                         else:
