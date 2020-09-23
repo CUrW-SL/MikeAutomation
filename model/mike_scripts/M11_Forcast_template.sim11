@@ -79,7 +79,7 @@
    EndSect  // Simulation
 
    [Results]
-      hd = |..\..\Results\M11_Forcast.res11|, '', 15, 3
+      hd = |..\..\Results\output_mike.res11|, '', 15, 3
       ad = ||, '', 1, 0
       st = ||, '', 1, 0
       rr = |..\..\Results\RR_Forcast.res11|, '', 15, 3
