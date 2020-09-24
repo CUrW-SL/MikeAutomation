@@ -90,7 +90,7 @@ def remove_prevous_run_files(config):
     remove_previous_run_file_in_dir(BC_DIR, config['matlab_tide_file'])
     remove_previous_run_file_in_dir(RAIN_DIR, config['matlab_rain_file'])
     remove_previous_run_file_in_dir(RESULTS_DIR, config['output_wl_file'])
-    
+
 
 def mike_run(bucket_time, config):
     try:
