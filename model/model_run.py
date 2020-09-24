@@ -1,5 +1,6 @@
 from datetime import datetime,timedelta
-from utils.com_utils import download_input_files, upload_file_to_bucket, KEY_FILE
+from utils.com_utils import download_input_files, upload_file_to_bucket, KEY_FILE, remove_previous_run_file_in_dir, \
+    remove_previous_run_file
 import subprocess
 import time
 
@@ -81,6 +82,15 @@ def update_mike21_sim_file(bucket_time, config):
         _write_data_to_file(M21_SIM_FILE, file_data)
         return True
 
+
+def remove_prevous_run_files(config):
+    remove_previous_run_file(M11_SIM_FILE)
+    remove_previous_run_file(M21_SIM_FILE)
+    remove_previous_run_file_in_dir(BC_DIR, config['matlab_discharge_file'])
+    remove_previous_run_file_in_dir(BC_DIR, config['matlab_tide_file'])
+    remove_previous_run_file_in_dir(RAIN_DIR, config['matlab_rain_file'])
+    remove_previous_run_file_in_dir(RESULTS_DIR, config['output_wl_file'])
+    
 
 def mike_run(bucket_time, config):
     try:

@@ -1,7 +1,24 @@
-from google.cloud import storage
+import subprocess
 
+from google.cloud import storage
+import os
 KEY_FILE = r"E:\MIKE\ProductionRun\hourly_run\uwcc-admin\uwcc-admin.json"
 
+
+def remove_previous_run_file_in_dir(dir_path, file_name):
+    file_path = os.path.join(dir_path, file_name)
+    remove_previous_run_file(file_path)
+
+
+def remove_previous_run_file(file_path):
+    try:
+        print('remove_previous_run_file|file_path : ', file_path)
+        command = 'del {}'.format(file_path)
+        print('remove_previous_run_file|command : ', command)
+        subprocess.call(command, shell=True)
+        print('remove_previous_run_file|success.')
+    except Exception as e:
+        print('remove_previous_run_file|Exception : ', str(e))
 
 def download_input_files(bucket_time, key_file, output_dir, bucket_name, src_file, dest_file, type):
     try:

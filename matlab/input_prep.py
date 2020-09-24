@@ -1,14 +1,26 @@
 import subprocess
 import time
 
-from utils.com_utils import download_input_files, upload_file_to_bucket, KEY_FILE
+from utils.com_utils import download_input_files, upload_file_to_bucket, KEY_FILE, remove_previous_run_file_in_dir
+
 
 MATLAB_DIR = r"E:\MIKE\ProductionRun\hourly_run\Matlab"
 MATLAB_INPUT_PROCESSOR = r"E:\MIKE\ProductionRun\hourly_run\MikeAutomation\windows_scripts\matlab_input_process.bat"
 
 
+def remove_previous_inputs(config):
+    remove_previous_run_file_in_dir(MATLAB_DIR, config['input_rain_file'])
+    remove_previous_run_file_in_dir(MATLAB_DIR, config['input_tide_file'])
+    remove_previous_run_file_in_dir(MATLAB_DIR, config['input_discharge_file'])
+    remove_previous_run_file_in_dir(MATLAB_DIR, config['matlab_rain_file'])
+    remove_previous_run_file_in_dir(MATLAB_DIR, config['matlab_discharge_file'])
+    remove_previous_run_file_in_dir(MATLAB_DIR, config['matlab_tide_file'])
+    remove_previous_run_file_in_dir(MATLAB_DIR, config['output_wl_file'])
+
+
 def prepare_inputs(bucket_time, config):
     print('prepare_inputs|started|bucket_time : ', bucket_time)
+    remove_previous_inputs(config)
     if download_rain_input_files(bucket_time, config):
         if download_tide_input_files(bucket_time, config):
             if download_discharge_input_files(bucket_time, config):
